@@ -5,6 +5,7 @@ body {
     margin: 10px 200px;
     font-size: 18px;
     background-color: #f2f4fc;
+    padding: 5rem 0;
 }
 
 form {
@@ -15,12 +16,12 @@ form {
     margin-left: -2rem;
 }
 
-.oneColumn {
+.col-1 {
     width: 100%;
     padding-left: 2rem;
 }
 
-.twoColumns {
+.col-2 {
     box-sizing: border-box;
     width: 50%;
     padding-left: 2rem;
