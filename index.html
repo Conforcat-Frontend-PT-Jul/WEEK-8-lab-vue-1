@@ -7,16 +7,15 @@
         <title>Vue Form Lab</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-
     </head>
 
     <body>
         <section>
             <h1>Contact us</h1>
-            <form method="POST">
+            <form method="POST" id="form" @submit.prevent="fetch">
                 <div class="col-1">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name">
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="name">
                 </div>
                 <div class="col-2">
                     <label for="email">Email</label>
@@ -36,8 +35,7 @@
             </form>
         </section>
 
-
-        <!-- Do not forget to link your JavaScript document -->
-
+        <script src="js/index.js"></script>
+        
     </body>
 </html>
