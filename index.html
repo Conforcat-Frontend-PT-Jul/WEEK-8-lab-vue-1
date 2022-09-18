@@ -15,22 +15,31 @@
             <form method="POST" @submit.prevent="send" id="form">
                 <div class="col-1">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="info.name">
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="info.name" required>
                 </div>
                 <div class="col-2">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" v-model="info.email">
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" v-model="info.email" required>
                 </div>
                 <div class="col-2">
                     <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" v-model="info.phone">
+                    <input 
+                    type="text" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="Enter your phone number" 
+                    v-model="info.phone" 
+                    pattern="(\+)[0-9]{11}" 
+                    title="Por favor, indica el código de páis seguido de tu número de teléfono, e.g. +34XXXXXXXXX" 
+                    required
+                    >
                 </div>
                 <div class="col-1">
                     <label for="message">Message</label>
-                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8" v-model="info.message"></textarea>
+                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8" minlength="50" v-model="info.message" required></textarea>
                 </div>
                 <div class="col-1">
-                    <input type="submit" value="Submit" @click="send"/>
+                    <input type="submit" value="Submit"/>
                 </div>
             </form>
         </section>
