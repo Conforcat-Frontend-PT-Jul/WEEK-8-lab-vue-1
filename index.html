@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Vue Form Lab</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
-    </head>
-
-    <body>
-        <section>
-            <h1>Contact us</h1>
-            <form method="POST">
-                <div class="col-1">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name">
-                </div>
-                <div class="col-2">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address">
-                </div>
-                <div class="col-2">
-                    <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
-                </div>
-                <div class="col-1">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8"></textarea>
-                </div>
-                <div class="col-1">
-                    <input type="submit" value="Submit" />
-                </div>
-            </form>
-        </section>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Form Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
 
 
-        <!-- Do not forget to link your JavaScript document -->
+<body>
+   
+    <section>
+        <h1>Contact us</h1>
+        <form method="POST" @submit.prevent="validateForm" @enter="validateForm">
+            <div class="col-1">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="data.name">
+                <p v-if="error.name" class="alert">{{ error.name }}</p>
+            </div>
+            <div class="col-2">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" v-model="data.email">
+                <p v-if="error.email" class="alert">{{ error.email }}</p>
+            </div>
+            <div class="col-2">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" v-model="data.phone">
+                <p v-if="error.phone" class="alert">{{ error.phone }}</p>
+            </div>
+            <div class="col-1">
+                <label for="message">Message</label>
+                <textarea id="message" name="comment" placeholder="Write your message here..." rows="8"
+                    v-model="data.message"></textarea>
+                <p v-if="error.message" class="alert">{{ error.message }}</p>
+            </div>
+            <div class="col-1">
+                <input type="submit" value="Submit" />
+            </div>
+            <div class="col-1">
+                <p v-if="mailsent" class="success">Thank you for your message! <br>We shall
+                    get in touch as soon as possible!</p>
+            </div>
+        </form>
 
-    </body>
+    </section>
+    <script src="./js/index.js"></script>
+
+</body>
+
+
 </html>
