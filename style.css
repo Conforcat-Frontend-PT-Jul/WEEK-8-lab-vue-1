@@ -68,3 +68,27 @@ input[type="submit"] {
     font-size: 0.85rem;
     color: white;
 }
+
+.alertBox{
+    border-radius: 0.5rem;
+    padding: 1rem 3rem;
+    margin: 0.5rem;
+}
+
+.alertBox span{
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+.error {
+   /* background:#ffecec url('form/error.png') no-repeat 1rem 50%; */
+    border:1px solid #f5aca6;
+}
+.success {
+    /*background:#e9ffd9 url('form/success.png') no-repeat 1rem 50%;*/
+    border:1px solid #a6ca8a;
+}
+
+#missingData, #wrongMail, #wrongPhone, #wrongMsg, #allOk{
+   display:none;
+}
