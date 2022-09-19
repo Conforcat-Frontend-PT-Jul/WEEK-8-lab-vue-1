@@ -11,7 +11,7 @@ new Vue({
   },
 
   methods: {
-    onSubmit(){
+    onSubmit(data){
       fetch('https://database.deta.sh/v1/a0wwnrex/contactmessages/items', {
         method: 'POST',
            headers: {
@@ -27,17 +27,21 @@ new Vue({
         }),
      
       })
-        .then((response)=> response.json())
-        .then((json)=> console.log(json));
+        .then(response=> response.json())
+        .then(data => console.log(data));
     },
+  }
     mounted() {
       fetch('https://database.deta.sh/v1/a0wwnrex/contactmessages/items')
         .then(response => {
           if (response.ok) return response.json()
-          else return new Error("Error")
+          else return new Error(console.log("Error"))
         })
-        .then(json => (json));
+        .then(json => {
+          data = json
+        })
+          
         }
     }
 
-  });
+);

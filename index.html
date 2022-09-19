@@ -10,15 +10,15 @@
     </head>
 
     <body>
+      
         <section>
-            <h1>Contact us</h1>
+       <div id="form">
+            <h1>{{hi}}</h1>
 
-            <form id="form" 
-            @submit.prevent="onSubmit" 
-            method="POST">    
+            <form  v-on:submit.prevent>    
                 <div class="col-1">
                     
-                    <label>Full Name*</label>
+                    <label>{{f1}}</label>
                     <input v-model="name" 
                     type="text" 
                     placeholder="Enter your full name">
@@ -26,36 +26,37 @@
                 </div>
                 <div class="col-2"> 
                     
-                    <label>Email</label>
+                    <label>{{f2}}</label>
                     <input v-model="email" 
-                    type="email" 
+                    type="text" 
                     placeholder="Enter your email address">
 
                 </div>
                 <div class="col-2">
                     
-                    <label>Phone</label>
+                    <label>{{f3}}</label>
                     <input v-model.number="phone" 
                     type="text" 
                     placeholder="Enter your phone number">
                     
                 </div>
                 <div class="col-1">
-                    <label>Message</label>
+                    <label>{{f4}}</label>
                     
                     <textarea v-model="message" 
                     placeholder= "Write your message here..." rows="8">
                     </textarea>
                 </div>
                 <div class="col-1">
-                    <input type="submit"  value="Submit" />
+                    <input type="submit"  @click = "go">
                 </div>
+               
             </form>
-             <p> {{name}}</p>
- 
+        </div>
+       
         </section>
-
+  
         <!-- Do not forget to link your JavaScript document -->
-        <script src="js/index.js"></script>
+        <script src="js/index2.js"></script>
     </body>
 </html>
