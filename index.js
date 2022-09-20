@@ -1,5 +1,48 @@
+const vueForm =
 new Vue({
-    el: 'form',
+    el: '#vueForm',
+    data() {
+        return { 
+            name: '',
+            email: '',
+            phone: '',
+            message: ''
+        }
+    },
+
+    methods: { 
+        formValidation() {
+            const validMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/;
+            const validPhone = /^\+34(0-9){9})$/;
+            let postForm = true;
+
+        for (item in this.data) {
+            this.errors[item] = ''
+        }
+
+        
+        }
+
+        onSubmit(e) {
+            e.preventDefault()
+            if(!this.name || !this.email || !this.phone || !this.message){
+                alert('All fields must be completed')
+            };
+        function mailValidate(email) {
+            if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)){
+                alert("The email adress" + email + " is correct.")
+                    }    
+        }       
+            
+
+            
+
+
+
+
+
+        }
+    }
 
 
 
@@ -9,10 +52,15 @@ new Vue({
 
 
     
-}) 
+}
     
 
-
+const data = {
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+}
 
 
 
