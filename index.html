@@ -14,13 +14,13 @@
             <h1>Contact us</h1>
             <div id="form">
                 <!--novalidate for disable HTML form validation-->
-            <form novalidate method="POST" @submit.prevent="handleSubmit">
+            <form novalidate method="POST" @submit.prevent="handleSubmit" >
                 <div class="col-1">
                     <label for="name">Full Name</label>
                     <input type="text" 
                     id="name" name="name" 
                     placeholder="Enter your full name"
-                    v-model="fname">
+                    v-model="fname" required>
                     <div class="error" v-if="nameErr">{{ nameErr }}</div>
                 </div>
                 <div class="col-2">
@@ -29,7 +29,7 @@
                     id="email" 
                     name="email" 
                     placeholder="Enter your email address"
-                    v-model="email">
+                    v-model="email" required>
                     <div class="error" v-if="emailErr">{{ emailErr }}</div>
                 </div>
                 <div class="col-2">
@@ -38,7 +38,7 @@
                     id="phone" 
                     name="phone" 
                     placeholder="Enter your phone number"
-                    v-model="phone">
+                    v-model="phone" required>
                     <div class="error" v-if="phoneErr">{{ phoneErr }}</div>
                 </div>
                 <div class="col-1">
@@ -47,13 +47,14 @@
                     name="comment" 
                     placeholder="Write your message here..." 
                     rows="8"
-                    v-model="message"></textarea>
+                    v-model="message" required></textarea>
                     <div class="error" v-if="msgErr">{{ msgErr }}</div>
                 </div>
                 <div class="col-1">
                     <input type="submit" value="Submit" />
                 </div>
             </form>
+            <div class="sucess" v-if="successMsg">{{ successMsg }}</div>
             <p>Full Name: {{ fname }} </p>
             <p>Email: {{ email }} </p>
             <p>Telephone: {{ phone }} </p>

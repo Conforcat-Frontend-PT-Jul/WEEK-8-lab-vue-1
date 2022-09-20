@@ -79,3 +79,12 @@ input[type="submit"]:hover {
     border: red solid 2px;
     color: red;
 }
+.sucess {
+  
+    margin-top: 1em;
+    padding: 1.5em;
+    font-size: 0.85rem;
+    text-align: center;
+    background-color: green;
+    color: #fff;
+}
