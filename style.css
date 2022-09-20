@@ -68,3 +68,34 @@ input[type="submit"] {
     font-size: 0.85rem;
     color: white;
 }
+
+p {
+    font-size: 0.8rem;
+    color: #32343f;
+}
+.error label {
+    color: red;
+}
+.correct label {
+    color: green;
+}
+.error input, .error textarea {
+    border: 3px solid red;
+}
+
+#error-msg {
+    width: 100%;
+    color: red;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
+#correct-msg {
+    width: 100%;
+    color: green;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1rem;
+}
+
