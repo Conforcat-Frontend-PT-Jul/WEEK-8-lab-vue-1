@@ -11,13 +11,11 @@ new Vue({
             phoneErr: "",
             msgErr: "",
             successMsg: "",
-            isSending: false
         }
     },
 
     methods: {
         handleSubmit(){
-            console.log("form submitted");
             //validate name
             /* /^([\w]{3,})+\s+([\w\s]{3,})+$/i
             ([\w]{3,}) the first name should contain only letters and of length 3 or more
@@ -45,9 +43,10 @@ new Vue({
             //validate message
             let messageIsValid = this.message.length >= 20;
             this.msgErr = messageIsValid ? "" : "The minimum length of message is 20 characters, add some more";
-    
 
-            
+            const formIsValid = nameIsValid  && emailIsValid && phoneIsValid && messageIsValid;
+    
+            if (formIsValid) {
             const url = "https://database.deta.sh/v1/a0wwnrex/contactmessages/items";
             const data = {
                 fname: this.fname,
@@ -68,12 +67,13 @@ new Vue({
                 body: JSON.stringify(body),
             };
 
+            
             fetch(url, fetchParams)
-                .then((response) => {
+            .then((response) => {
                 if (response.ok) return response.json();
-                })
-                //if all ok then
-                .then((json) => {
+            })
+            //if all ok then
+            .then((json) => {
                 console.log(json);
                 this.successMsg = "Thank you for contact us!";
                 this.fname = "";
@@ -83,6 +83,9 @@ new Vue({
                 })
                 .catch((err) => console.log(err));
             
+                } else {
+                    console.log ("Form is invalid");
                 }
-            }
+             }   
+          }  
   });
