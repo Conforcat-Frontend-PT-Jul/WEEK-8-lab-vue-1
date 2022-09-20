@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="style.css" />
     <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
   </head>
 
   <body>
     <section>
       <h1>Contact us</h1>
+
       <div id="form">
         <p v-if="errors.length">
             <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
@@ -20,7 +22,6 @@
               <li v-for="error in errors">{{ error }}</li>
             </ul>
         </p>
-
 
         <form @submit.prevent="checkForm" method="POST">
           <div class="col-1">
@@ -30,7 +31,7 @@
               id="name"
               name="name"
               placeholder="Enter your full name"
-              v-model="fullName"
+              v-model="contacts.fullName"
             />
           </div>
           <div class="col-2">
@@ -40,7 +41,7 @@
               id="email"
               name="email"
               placeholder="Enter your email address"
-              v-model="email"
+              v-model="contacts.email"
             />
           </div>
           <div class="col-2">
@@ -50,7 +51,7 @@
               id="phone"
               name="phone"
               placeholder="Enter your phone number"
-              v-model="phone"
+              v-model="contacts.phone"
             />
           </div>
           <div class="col-1">
@@ -60,16 +61,22 @@
               name="comment"
               placeholder="Write your message here..."
               rows="8"
-              v-model="message"
+              v-model="contacts.message"
             ></textarea>
           </div>
           <div class="col-1">
             <input type="submit" value="Submit" />
           </div>
         </form>
+
+        <div v-if="showSubmissionMessage" class="submitted-message fade">
+          Gracias! Tu mensaje se ha enviado correctamente :)
+        </div>
+
       </div>
     </section>
 
     <script src="./js/index.js"></script>
+
   </body>
 </html>

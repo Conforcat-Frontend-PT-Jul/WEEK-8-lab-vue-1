@@ -3,26 +3,41 @@ new Vue({
   data() {
     return {
       errors: [],
-      fullName: "",
-      email: "",
-      phone: "",
-      message: "",
+      contacts: {
+        fullName: "",
+        email: "",
+        phone: "",
+        message: "",
+      },
+      showSubmissionMessage: false,
     };
   },
   methods: {
     checkForm: function (e) {
       this.errors = [];
 
-      if (!this.fullName) {
+      if (!this.contacts.fullName) {
         this.errors.push("El nombre es obligatorio.");
       }
-      if (!this.email) {
-        this.errors.push("El correo electrónico es obligatorio.");
-      } else if (!this.validateEmail(this.email)) {
+
+      if (!this.validateEmail(this.contacts.email)) {
         this.errors.push("El correo electrónico debe ser válido.");
+        this.showSubmissionMessage = false;
+      }
+
+      if (!this.validatePhone(this.contacts.phone)) {
+        console.log(this.validatePhone(this.contacts.phone));
+        this.errors.push("El telefono debe ser valido.");
+        this.showSubmissionMessage = false;
+      }
+
+      if (!this.validateMessage(this.contacts.message)) {
+        this.errors.push("El mensaje debe contener mas de 50 caracteres.");
+        this.showSubmissionMessage = false;
       }
 
       if (!this.errors.length) {
+        this.submitForm();
         return true;
       }
     },
@@ -37,19 +52,23 @@ new Vue({
       return regex.test(phone);
     },
 
-    submit: function (form) {
+    validateMessage: function (message) {
+      return message.length > 50;
+    },
+
+    submitForm() {
       const CONTACT_API_BASE_URL =
         "https://database.deta.sh/v1/a0wwnrex/contactmessages/items";
       const X_API_KEY = "a0wwnrex_JeRhBybn5iFYziStv9d2M6Mchd2b4B4H";
 
       const datos = {
-        fullName: this.fullName,
-        email: this.email,
-        phone: this.phone,
-        message: this.message,
+        fullName: this.contacts.fullName,
+        email: this.contacts.email,
+        phone: this.contacts.phone,
+        message: this.contacts.message,
       };
 
-      console.log(JSON.stringify(datos));
+      //console.log(JSON.stringify(datos));
 
       const body = { item: datos };
 
@@ -67,8 +86,7 @@ new Vue({
         .then(async (response) => {
           console.log(response);
           if (response.status === 201) {
-            //hideForm();
-            //showSubmissionMessage();
+            this.showSubmissionMessage = true;
           } else {
             await showError();
           }
@@ -77,10 +95,13 @@ new Vue({
           await showError();
         })
         .finally(() => {
-          //restoreSendFormButton();
+          this.showSubmissionMessage = true;
+          // Reset form field
+          this.contacts.fullName = "";
+          this.contacts.phone = "";
+          this.contacts.email = "";
+          this.contacts.message = "";
         });
     },
   },
-
-  mounted() {},
 });
