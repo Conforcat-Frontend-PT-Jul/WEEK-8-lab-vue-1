@@ -21,6 +21,7 @@
             name="name"
             placeholder="Enter your full name"
             v-model="data.name"
+            required
           />
         </div>
         <div class="col-2">
@@ -31,16 +32,19 @@
             name="email"
             placeholder="Enter your email address"
             v-model="data.email"
+            required
           />
         </div>
         <div class="col-2">
           <label for="phone">Phone</label>
           <input
-            type="text"
+            type="number"
             id="phone"
             name="phone"
             placeholder="Enter your phone number"
             v-model="data.phone"
+            required
+            pattern="+[/^\+([0-9]{11})$/]"
           />
         </div>
         <div class="col-1">
@@ -53,8 +57,21 @@
             rows="8"
           ></textarea>
         </div>
-        <div class="col-1">
+        <div class="col-2">
           <input type="submit" value="Submit" />
+        </div>
+        <div class="col-1">
+          <p
+            v-if="mailed"
+            style="
+              border-radius: 8px;
+              background-color: aquamarine;
+              color: darkgreen;
+            "
+          >
+            We have received your message. <br />
+            Thank you for your interest.
+          </p>
         </div>
       </form>
     </section>
