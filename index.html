@@ -16,14 +16,32 @@
             <form method="POST" @submit.prevent="send" id="form">
                 <div class="col-1" :class="{ error: invalidName }">
                     <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="info.name" @blur="validateName" >
+                    <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Enter your full name" 
+                    v-model="info.name" 
+                    @blur="validateName" 
+                    @click="hideConfirmation"
+                    >
                     <p v-if="invalidName">El nombre es obligatorio</p>
                 </div>
+
                 <div class="col-2" :class="{ error: invalidEmail }">
                     <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" v-model="info.email" @blur="validateEmail">
+                    <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your email address" 
+                    v-model="info.email" 
+                    @blur="validateEmail" 
+                    @click="hideConfirmation"
+                    >
                     <p v-if="invalidEmail">Introduce un correo electrónico válido. Incluye un signo @ en la dirección de correo electrónico.</p>
                 </div>
+
                 <div class="col-2" :class="{ error: invalidPhone }">
                     <label for="phone">Phone *</label>
                     <input 
@@ -32,20 +50,32 @@
                     name="phone" 
                     placeholder="Enter your phone number" 
                     v-model="info.phone"
-                    @blur="validatePhone" 
+                    @blur="validatePhone"
+                    @click="hideConfirmation" 
                     >
                     <p v-if="invalidPhone">Por favor, indica el código de páis seguido de tu número de teléfono, e.g. +34XXXXXXXXX</p>
                 </div>
+
                 <div class="col-1" :class="{ error: invalidMessage }">
                     <label for="message">Message *</label>
-                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8" v-model="info.message" @blur="validateMessage"></textarea>
+                    <textarea 
+                    id="message" 
+                    name="comment" 
+                    placeholder="Write your message here..." 
+                    rows="8" 
+                    v-model="info.message" 
+                    @blur="validateMessage" 
+                    @click="hideConfirmation">
+                    </textarea>
                     <p v-if="invalidMessage">El mensaje debe contener como mínimo 50 caracteres</p>
                 </div>
+
                 <div class="col-1">
                     <input type="submit" value="Submit"/>
                 </div>
+
                 <p v-if="invalidForm" id="error-msg">Por favor, complete los campos requeridos</p>
-                <!-- <p v-if="submittedForm" id="correct-msg">El formulario se ha enviado correctamente!</p> -->
+                <p v-show="confirmation" id="correct-msg">{{ confirmation }}</p>
             </form>
         </section>
         

@@ -13,7 +13,7 @@ new Vue ({
             invalidPhone: false,
             invalidMessage: false,
             invalidForm: false,
-            // submittedForm: false
+            confirmation: ''
         }
     },
     
@@ -43,9 +43,8 @@ new Vue ({
                     let response = await fetch(url, fetchParams);
                     if (response.ok) {
                         let result = await response.json();
-                        alert("El formulario se ha enviado correctamente");
-                        // this.submittedForm = true; --> lo dejo comentado, ya que si lo implemento, el form no se resetea, no se porque...
-                        form.reset();
+                        this.confirmation = "El formulario se ha enviado correctamente!";
+                        this.reset();
                     } else {
                         throw new Error(response.statusText);
                     }
@@ -90,7 +89,7 @@ new Vue ({
         },
 
         validateMessage() {
-            const regExMessage = /^[\s\S]{50,150}$/;
+            const regExMessage = /^[\s\S]{50,}$/;
 
             if(!this.info.message || !regExMessage.test(this.info.message)) {
                 this.invalidMessage = true;
@@ -98,6 +97,16 @@ new Vue ({
                 this.invalidMessage = false;
             }
         },
-        
+
+        reset() {
+           this.info.name = '';
+           this.info.email = '';
+           this.info.phone = '';
+           this.info.message = '';
+        },
+
+        hideConfirmation() {
+            this.confirmation = '';
+        }
     }
 });
