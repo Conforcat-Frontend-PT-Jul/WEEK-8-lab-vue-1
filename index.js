@@ -28,6 +28,7 @@ new Vue ({
             if(this.checkForm()) {
                 this.invalidForm = false;
 
+                const url = 'https://database.deta.sh/v1/a0wwnrex/contactmessages/items';
                 const fetchParams = {
                     method: 'POST',
                     headers: {
@@ -39,11 +40,11 @@ new Vue ({
                 };
     
                 try {
-                    let response = await fetch('https://database.deta.sh/v1/a0wwnrex/contactmessages/items', fetchParams);
+                    let response = await fetch(url, fetchParams);
                     if (response.ok) {
                         let result = await response.json();
                         alert("El formulario se ha enviado correctamente");
-                        // this.submittedForm = true;
+                        // this.submittedForm = true; --> lo dejo comentado, ya que si lo implemento, el form no se resetea, no se porque...
                         form.reset();
                     } else {
                         throw new Error(response.statusText);
