@@ -1,41 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Vue Form Lab</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Form Lab</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  </head>
 
-    <body>
-        <section>
-            <h1>Contact us</h1>
-            <form method="POST">
-                <div class="col-1">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name">
-                </div>
-                <div class="col-2">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address">
-                </div>
-                <div class="col-2">
-                    <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
-                </div>
-                <div class="col-1">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8"></textarea>
-                </div>
-                <div class="col-1">
-                    <input type="submit" value="Submit" />
-                </div>
-            </form>
-        </section>
+  <body>
+    <section id="form">
+      <form @submit.prevent="onSubmit" method="POST">
+        <h1>Contact us</h1>
+        <div class="col-1">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            v-model="name"
+          />
+        </div>
+        <div class="col-2">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            v-model="email"
+          />
+        </div>
+        <div class="col-2">
+          <label for="phone">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+            v-model="phone"
+          />
+          <span> {{ errors.phone }} </span>
+        </div>
+        <div class="col-1">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="comment"
+            placeholder="Write your message here..."
+            rows="8"
+            v-model="message"
+          ></textarea>
+          <span>{{ errors.message }}</span>
+        </div>
+        <span class="success-message">{{ successMessage }}</span>
+        <div class="col-1">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    </section>
 
-        <!-- Do not forget to link your JavaScript document -->
-        
-    </body>
+    <!-- Do not forget to link your JavaScript document -->
+    <script src="./js/index.js"></script>
+  </body>
 </html>
