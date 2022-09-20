@@ -39,7 +39,7 @@ new Vue ({
                     body: JSON.stringify({ item: this.info })
                 };
     
-                try {
+                try { 
                     let response = await fetch(url, fetchParams);
                     if (response.ok) {
                         let result = await response.json();
