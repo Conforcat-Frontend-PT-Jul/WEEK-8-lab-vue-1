@@ -28,25 +28,26 @@ new Vue({
             let fnameFormat = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
             let nameIsValid = this.fname.match(fnameFormat);
             this.nameErr = nameIsValid ? "" : "Incorrect name format, please, enter valid full name";
-            
             //this.nameErr = this.fname !== "" ? "" : "Please, enter your full name"; ---this validate only if there is an input
-            
+    
+
             //validate email
             //regex to validate email contains @ and .
             let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             let emailIsValid = this.email.match(mailFormat);
             this.emailErr = emailIsValid ? "" : "Incorrect email format, should contain @ and .";
+        
             
             //validate phone
             let phoneIsValid = this.phone.startsWith("+");
             this.phoneErr = phoneIsValid ? "" : "Telephone should start with +";
+         
             //validate message
             let messageIsValid = this.message.length >= 20;
             this.msgErr = messageIsValid ? "" : "The minimum length of message is 20 characters, add some more";
+    
 
             
-            if (nameIsValid || emailIsValid || phoneIsValid || messageIsValid) {
-
             const url = "https://database.deta.sh/v1/a0wwnrex/contactmessages/items";
             const data = {
                 fname: this.fname,
@@ -84,5 +85,4 @@ new Vue({
             
                 }
             }
-        }
   });
