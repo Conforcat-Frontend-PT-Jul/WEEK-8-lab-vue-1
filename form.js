@@ -59,8 +59,8 @@ new Vue ({
                       console.log('Thank you! Your message has been sent.');
                       register.reset();
          
-                   };
-                });
+                   }
+                })
 
         },
         
