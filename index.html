@@ -7,38 +7,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Form Lab</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 </head>
 
 <body>
     <section>
         <h1>Contact us</h1>
-        <form method="POST" id="data" @submit.prevent="checkForm">
+        <form method="POST" id="data" @submit.prevent="send">
             <div class="col-1" :class="{ error: invalidName }">
                 <label for="name">Full Name</label>
-                <input v-model="user.name" type="text" id="name" name="name" placeholder="Enter your full name">
+                <input v-model="user.name" type="text" id="name" name="name" placeholder="Enter your full name" >
                 <p v-if="invalidName">Put your f*cking name!</p>
             </div>
+
             <div class="col-2" :class="{ error: invalidEmail }">
                 <label for="email">Email</label>
-                <input v-model="user.email" type="email" id="email" name="email" placeholder="Enter your email address">
+                <input v-model="user.email" type="email" id="email" name="email" placeholder="Enter your email address" @blur="validateEmail" 
+                @click="hideConfirmation">
                 <p v-if="invalidEmail">Please enter a valid email. Include an @ sign in the email address.</p>
             </div>
+
             <div class="col-2" :class="{ error: invalidPhone }">
                 <label for="phone">Phone</label>
-                <input v-model="user.phone" type="text" id="phone" name="phone" placeholder="Enter your phone number">
+                <input v-model="user.phone" type="text" id="phone" name="phone" placeholder="Enter your phone number" @blur="validatePhone"
+                @click="hideConfirmation" >
                 <p v-if="invalidPhone">Please enter country code followed by your phone number, i.e. +34xxxxxxxxx</p>
             </div>
+
             <div class="col-1" :class="{ error: invalidMessage }">
-                <label for="message">Message</label>
-                <textarea v-model="user.message" id="message" name="comment" placeholder="Write your message here..." rows="8"></textarea>
+                <label for="message">Message *</label>
+                <textarea v-model="user.message" id="message" name="comment" placeholder="Write your message here..." rows="8" @blur="validateMessage" 
+                @click="hideConfirmation"></textarea>
                 <p v-if="invalidMessage">The message should contain 50 characters as a minimum.</p>
             </div>
+
             <div class="col-1">
                 <input type="submit" value="Submit" />
             </div>
             <p v-if="invalidForm" id="error-msg">Please complete required fields.</p>
         </form>
+        <p class="confirmation"></p>
     </section>
     <script src="./JS/go.js"></script>
 </body>
