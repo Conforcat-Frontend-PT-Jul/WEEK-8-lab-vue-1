@@ -7,37 +7,39 @@
         <title>Vue Form Lab</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
 
     <body>
-        <section>
+        <!--Utilizamos la directiva v-model en los elementos input y select para conectar de manera bidireccional los datos de entrada de nuestro usuario y nuestro modelo de datos dentro de la aplicación Vue,-->
+        <section id="validateForm">
             <h1>Contact us</h1>
-            <form method="POST">
+            <form method="POST" v-on:submit.prevent="validateForm();">
                 <div class="col-1">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name">
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="name">
                 </div>
                 <div class="col-2">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" v-model="email">
                 </div>
                 <div class="col-2">
                     <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
+                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" v-model="phone">
                 </div>
                 <div class="col-1">
                     <label for="message">Message</label>
-                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8"></textarea>
+                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8" v-model="message"></textarea>
                 </div>
                 <div class="col-1">
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" @ click = 'submit': class = "verificar.flag? 'btn-primary': 'btn-default'">confirm register/>
                 </div>
             </form>
         </section>
 
 
         <!-- Do not forget to link your JavaScript document -->
-
+        <script src="form.js"></script>
     </body>
+
 </html>
