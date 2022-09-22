@@ -13,35 +13,26 @@
         <section>
             <h1>Contact us</h1>
             <form id="form" method="POST" @submit.prevent="submitForm">
-                <div class="col-1" class="{ error: invalidName }">
+                <div class="col-1">
                     <label for="name">Full Name</label>
                     <input v-model="name" type="text" id="name" name="name" placeholder="Enter your full name">
-                      <!--  <p v-if="invalidName">Por favor, rellena este campo.</p> --> 
                 </div>
-                <div class="col-2" class="{ error: invalidEmail }">
+                <div class="col-2">
                     <label for="email">Email</label>
                     <input v-model="email" type="email" id="email" name="email" placeholder="Enter your email address">
-                   <!-- <p v-if="invalidEmail">Por favor, introduce una dirección de correo electrónico válida.</p>--> 
                 </div>
-                <div class="col-2" class="{ error: invalidPhone }">
+                <div class="col-2">
                     <label for="phone">Phone</label>
                     <input v-model="phone" type="text" id="phone" name="phone" placeholder="Enter your phone number">
-                      <!--  <p v-if="invalidPhone">Por favor, introduce un número de teléfono indicando el código de país. Por ejemplo: +34000000000</p> --> 
-                </div>
-                <div class="col-1" class="{ error: invalidMessage }">
-                    <label for="message">Message</label>
-                    <textarea v-model="message" id="message" name="comment" placeholder="Write your message here..." rows="8"></textarea>
-                      <!--  <p v-if="invalidMessage">El mensaje debe contener un máximo de 50 caracteres.</p>--> 
                 </div>
                 <div class="col-1">
+                    <label for="message">Message</label>
+                    <textarea v-model="message" id="message" name="comment" placeholder="Write your message here..." rows="8"></textarea>
+                    </div>
+                <div class="col-1">
                     <input type="submit" value="Submit" />
-                </div>
-                <p v-if="error" id="error-message">
-                Uno o más campos tienen un error. Por favor, revísalos e inténtalo de nuevo.</p>
-                
-                  <!--  <p v-if="enviado" class="submitted-message">
-                Gracias por tu mensaje. Ha sido enviado correctamente.</p> --> 
-
+                </div>                
+      
             </form>
         </section>
         
