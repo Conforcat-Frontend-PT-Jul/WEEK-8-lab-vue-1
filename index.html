@@ -12,25 +12,31 @@
     <body>
         <section>
             <h1>Contact us</h1>
-            <form method="POST" id="form" @submit.prevent="fetch">
+            <form method="POST" id="form" v-on:submit.prevent="validate">
                 <div class="col-1">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="name">
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" v-model="data.name">
+                    <p class="form-input-error" v-show="errorName">The name must be between 3 and 40 characters and can only cointain letters and spaces.</p>
                 </div>
                 <div class="col-2">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" v-model="data.email">
+                    <p class="form-input-error" v-show="errorEmail">Needs to be a valid email direction.</p>
                 </div>
                 <div class="col-2">
                     <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
+                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" v-model="data.phone">
+                    <p class="form-input-error" v-show="errorPhone">Phone can only contain numbers and must start with your country prefix (ex: +34666666666).</p>
                 </div>
                 <div class="col-1">
                     <label for="message">Message</label>
-                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8"></textarea>
+                    <textarea id="message" name="comment" placeholder="Write your message here..." rows="8" v-model="data.comment"></textarea>
+                    <p class="form-input-error" v-show="errorMessage">Your message must have between 50 and 500 characters length.</p>
                 </div>
                 <div class="col-1">
                     <input type="submit" value="Submit" />
+                    <p class="success-message" id="success-message" v-show="successForm">The form submitted successfully!</p>
+                    <p class="form-message" id="form-message" v-show="invalidForm"><b>The fields can't be empty. Please, complete the form correctly.</b></p>                
                 </div>
             </form>
         </section>
