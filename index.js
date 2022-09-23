@@ -12,17 +12,17 @@ new Vue({
     },
     methods: {
         sendData(event) {
-            event.preventDefaul();
+            event.preventDefault();
             if (!this.name || !this.email || !this.phone || !this.message) {
                 alert('You must complete all fields');
             }
             if (this.phone && this.phone[0] != '+') {
-                alert('your phone number should start with +');
+                alert('Your phone number should start with +');
             }
             if (mssage.leght > 50) {
                 alert('The message should not be more than 50 characters');
             }
-            if (this.name && this.email && this.phone && this.message) {
+            else if (this.name && this.email && this.phone && this.message) {
                 const url = 'https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js';
                 const data = {
                     name: this.name,

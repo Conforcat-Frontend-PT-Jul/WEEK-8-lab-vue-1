@@ -11,7 +11,8 @@
     <body>
         <section>
             <h1>Contact us</h1>
-            <form method="POST" id="form" @submit="sendData">
+            <form method="POST" id="form" @submit.prevent="sendData">
+                <!-- <form @submit.prevent="onSubmit">...</form> -->
                 <!-- prevent default y enter para vue -->
                 <div class="col-1">
                     <label for="name">Full Name</label>
