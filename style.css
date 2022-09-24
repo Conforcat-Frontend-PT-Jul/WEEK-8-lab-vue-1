@@ -68,3 +68,11 @@ input[type="submit"] {
     font-size: 0.85rem;
     color: white;
 }
+input[type="submit"]:hover{
+    background-color: #122370;
+    cursor: pointer;
+}
+
+small {
+    color: lightcoral;
+}
