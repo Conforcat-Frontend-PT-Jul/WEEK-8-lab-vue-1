@@ -1,0 +1,17 @@
+datos.json
+[
+    {
+      "name": "Rubber Duck",
+      "price": 26,
+      "amount": 1,
+      "total": 0
+    },
+    {
+      "name": "Beach Towel",
+      "price": 12.5,
+      "amount": 1,
+      "total": 0
+    }
+]
+
+
